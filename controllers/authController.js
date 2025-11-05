@@ -473,41 +473,6 @@ exports.getUserDetails = async (req, res) => {
       });
     }
 
-    let subscriptionUpdated = false;
-
-    // Loop through subscriptions and update details
-    if (user.subscription && user.subscription.length > 0) {
-      user.subscription = user.subscription.map((sub) => {
-        const now = new Date();
-
-        // Calculate remaining days based on trial or paid plan
-        let endDate =
-          sub.status === "trialing" ? sub.trialEndDate : sub.planExpireDate;
-        let remainingDays = endDate
-          ? Math.max(0, Math.ceil((endDate - now) / (1000 * 60 * 60 * 24)))
-          : null;
-
-        // Update remainingDays
-        if (remainingDays !== sub.remainingDays) {
-          sub.remainingDays = remainingDays;
-          subscriptionUpdated = true;
-        }
-
-        // Update status if expired
-        if (endDate && now > endDate && sub.status !== "expired") {
-          sub.status = "expired";
-          subscriptionUpdated = true;
-        }
-
-        return sub;
-      });
-    }
-
-    // Save only if subscription data changed
-    if (subscriptionUpdated) {
-      await user.save();
-    }
-
     return res.status(200).json({
       success: true,
       user,
