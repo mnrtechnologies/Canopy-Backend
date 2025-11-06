@@ -16,32 +16,13 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-      consultants: { type: Array, default: [] },
-    imageUrl: {
+    consultants: { 
+      type: Array, 
+      default: [] 
+    },
+    emailContent: {
       type: String,
-    },
-    webLinks: {
-      type: [
-        {
-          title: { type: String },
-          link: { type: String },
-        },
-      ],
-      default: [],
-    },
-    youtubeLinks: {
-      type: [
-        {
-          title: { type: String },
-          link: { type: String },
-          duration: { type: String, default: "N/A" },
-        },
-      ],
-      default: [],
-    },
-    isChecked: {
-      type: String,
-      default: "false",
+      default: "",
     },
   },
   { timestamps: true }
