@@ -18,12 +18,14 @@ ConnectDB();
 
 const PORT = process.env.PORT || 5000;
 
-const authRouter = require("./routes/authRoutes")
+const promptRoute = require("./routes/promptRoutes")
+const authRoute = require("./routes/authRoutes")
 const messageRoute = require('./routes/messageRoutes')
 const conversationRoute = require('./routes/conversationRoutes')
 
 //Routes
-app.use("/api/auth",authRouter);
+app.use("/api/auth",authRoute);
+app.use('/api/prompt',promptRoute)
 app.use('/api/message',messageRoute)
 app.use('/api/conversation',conversationRoute)
 
