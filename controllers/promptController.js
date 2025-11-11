@@ -102,3 +102,30 @@ exports.getPromptById = async (req, res) => {
     });
   }
 };
+
+// ✅ Delete prompt
+exports.deletePrompt = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedPrompt = await Prompt.findByIdAndDelete(id);
+
+    if (!deletedPrompt) {
+      return res.status(404).json({
+        success: false,
+        message: "Prompt not found.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Prompt deleted successfully.",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error deleting prompt",
+      error: error.message,
+    });
+  }
+};
+
