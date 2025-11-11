@@ -3,7 +3,7 @@ const Prompt = require("../models/Prompt");
 // Add new prompt
 exports.addPrompt = async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content,name } = req.body;
 
     if (!title || !content) {
       return res.status(400).json({
@@ -31,11 +31,11 @@ exports.addPrompt = async (req, res) => {
 exports.editPrompt = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content } = req.body;
+    const { title, content,name } = req.body;
 
     const updatedPrompt = await Prompt.findByIdAndUpdate(
       id,
-      { title, content },
+      { title,content,name },
       { new: true, runValidators: true }
     );
 
