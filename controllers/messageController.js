@@ -31,7 +31,7 @@ exports.getMessagesByConversationId = async (req, res) => {
 exports.addMessage = async (req, res) => {
   try {
     const { conversationId } = req.params;
-    const { sender,content, first_response,consultants , emailContent,summary_context,last_response} = req.body;
+    const { sender,content, first_response,consultants , emailContent,summary_context,reasoning_context,last_response} = req.body;
 
     const conversation = await Conversation.findOne({
       _id: conversationId,
@@ -48,6 +48,7 @@ exports.addMessage = async (req, res) => {
       consultants: consultants || [],
       emailContent: emailContent || "",
       summary_context: summary_context || "",
+      reasoning_context:reasoning_context ?? null,
       last_response,
     });
 

@@ -31,6 +31,10 @@ const messageSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    reasoning_context: {
+      type: String,
+      default: "",
+    },
     last_response: {
       type: String,
      
