@@ -12,6 +12,9 @@ const messageSchema = new mongoose.Schema(
       enum: ["user", "assistant"],
       required: true,
     },
+    content:{
+      type:String
+    },
     first_response: {
       type: String,
     
