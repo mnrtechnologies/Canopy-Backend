@@ -31,7 +31,7 @@ exports.getMessagesByConversationId = async (req, res) => {
 exports.addMessage = async (req, res) => {
   try {
     const { conversationId } = req.params;
-    const { sender, content,consultants , emailContent} = req.body;
+    const { sender, first_response,consultants , emailContent,summary_context,last_response} = req.body;
 
     const conversation = await Conversation.findOne({
       _id: conversationId,
@@ -43,9 +43,11 @@ exports.addMessage = async (req, res) => {
     const message = await Message.create({
       conversationId,
       sender,
-      content,
+      first_response,
       consultants: consultants || [],
-      emailContent: emailContent || ""
+      emailContent: emailContent || "",
+      summary_context: summary_context || "",
+      last_response,
     });
 
     conversation.messages.push(message._id);

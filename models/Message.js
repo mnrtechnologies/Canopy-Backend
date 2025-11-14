@@ -12,17 +12,25 @@ const messageSchema = new mongoose.Schema(
       enum: ["user", "assistant"],
       required: true,
     },
-    content: {
+    first_response: {
       type: String,
       required: true,
     },
-    consultants: { 
-      type: Array, 
-      default: [] 
+    consultants: {
+      type: Array,
+      default: [],
     },
     emailContent: {
       type: String,
       default: "",
+    },
+    summary_context: {
+      type: String,
+      default: "",
+    },
+    last_response: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }
