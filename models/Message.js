@@ -14,7 +14,7 @@ const messageSchema = new mongoose.Schema(
     },
     first_response: {
       type: String,
-      required: true,
+    
     },
     consultants: {
       type: Array,
@@ -30,7 +30,7 @@ const messageSchema = new mongoose.Schema(
     },
     last_response: {
       type: String,
-      required: true,
+     
     },
   },
   { timestamps: true }
