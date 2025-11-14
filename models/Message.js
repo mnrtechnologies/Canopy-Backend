@@ -32,8 +32,8 @@ const messageSchema = new mongoose.Schema(
       default: "",
     },
     reasoning_context: {
-      type: String,
-      default: "",
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
     },
     last_response: {
       type: String,
