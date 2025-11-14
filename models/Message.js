@@ -39,6 +39,18 @@ const messageSchema = new mongoose.Schema(
       type: String,
      
     },
+    response_text: {
+      type: String,
+      default: "",
+    },
+    comparison_summary: {
+      type: String,
+      default: "",
+    },
+    final_recommendation: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
