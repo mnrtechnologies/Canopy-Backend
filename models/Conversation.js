@@ -19,15 +19,15 @@ const conversationSchema = new mongoose.Schema(
 );
 
 // Auto-delete conversation if it has no messages
-conversationSchema.post("save", async function (doc) {
-  try {
-    if (doc.messages.length === 0) {
-      await doc.deleteOne();
-      console.log("Deleted empty conversation:", doc._id);
-    }
-  } catch (err) {
-    console.error("Auto delete error:", err);
-  }
-});
+// conversationSchema.post("save", async function (doc) {
+//   try {
+//     if (doc.messages.length === 0) {
+//       await doc.deleteOne();
+//       console.log("Deleted empty conversation:", doc._id);
+//     }
+//   } catch (err) {
+//     console.error("Auto delete error:", err);
+//   }
+// });
 
 module.exports = mongoose.model("Conversation", conversationSchema);
